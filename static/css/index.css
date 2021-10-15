@@ -1,0 +1,143 @@
+/* **************  index with bg-picture ******************** */
+/* .grid-wrapper{
+    height: 100vh;
+} */
+html,body{
+
+    -ms-overflow-style: none;
+    -ms-overflow: hidden;
+    overflow-y: scroll;
+}
+.container {
+    height:100vh;
+
+}
+image {
+    width: 100%;
+}
+.container {
+    background: #c4907d;
+    /* max-height: 100vh; */
+    /* height:100vh; */
+    padding: 0 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url(../img/road/road_1950_250kb.jpg);
+    /* background-image: url(../img/road/road_1950_250kb.jpg); */
+    background-size: cover;
+    background-position: center bottom;
+}
+.call-button {
+    color: #fff;
+    width: 600px;
+    text-align: center;
+}
+.call-button  h1 {
+    font-size: 1.5em;
+}
+.call-button  h2 {
+    font-size: 1em;
+}
+.call-button p{
+    margin-bottom: 2rem;
+    font-size: .8em;
+}
+/* div == like button on index page */
+.start {
+    color:white;
+    cursor: pointer;
+    border: 1px solid white;
+    padding:5px;
+}
+
+@media (max-width:400px){
+    .container{
+        background-image: url(../img/road/road_500_17kb.jpg);
+    }
+
+}
+@media (min-width: 401px) and (max-width: 800px) {
+    .container{
+        background-image: url(../img/road/road_1350_130kb.jpg);
+    }
+
+
+}
+@media (min-width:700px){
+    @supports (display: grid) {
+        .grid-wrapper-index {
+          display: grid;
+        }
+    }
+    .grid-wrapper-index {
+        height:100vh;
+    }
+    .grid-wrapper-index {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+
+    }
+    nav,.fade-msg,.container,#footer-nav,#loginModal,#signupModal,#help,#about{
+        grid-column: 1/-1;
+    }
+    nav{
+        grid-area: nav;
+    }
+    .fade-msg {
+        grid-area: fad;
+    }
+    .container{
+        grid-area: container;
+    }
+    /* #loginModal {
+       grid-area: login;
+    }
+    #signupModal {
+       grid-area: signup;
+    } */
+    #help {
+       grid-area: hlp;
+   }
+    #about {
+       grid-area: about;
+    }
+    #nav-footer{
+        grid-area: footer;
+    }
+    .grid-wrapper-index{
+        grid-template-areas:
+        "nav nav nav"
+        "fad fad fad"
+        "container container container"
+        "footer footer footer"
+        "hlp hlp hlp"
+        "about about about"
+
+    }
+    /* #help,#favorites,#about {
+        visibility: hidden;
+    } */
+    .call-button  h1 {
+        font-size: 2em;
+        letter-spacing: 3px;
+    }
+    .call-button  h2 {
+        font-size: 1.5em;
+        letter-spacing: 2px;
+    }
+    .call-button p{
+        margin-bottom: 2rem;
+        font-size: 1em;
+    }
+    .call-button a {
+        /* color:white;
+        text-decoration: none;
+        border: 1px solid white; */
+        padding:15px;
+    }
+    
+}
+
+/* ******************** */

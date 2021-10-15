@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title %} create post |{{block.super}}{% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/normalize.css'%}">
+    <link rel="stylesheet" href="{% static 'css/post.css' %}">
+{% endblock %}
+
+
+    {% block front%}
+    {% endblock front %}
+    {% block content %}
+    <!-- <section class="post-container"> -->
+    <main class="container-section">
+        <div class="container-wrapper">
+            <div class="meta">
+                <h1 class="title-section">
+                    {{header_title|safe}}
+                </h1>
+
+            </div> <!--end post-meta-->
+            <!-- <hr> -->
+            <div class="content-body">
+                <!-- url to the same view -->
+                    <form method="post" action="" class="form-main" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{form.media}}
+                    <!-- if form.errors %}
+                        <p class="red">form.errors}}</p>
+                     endif %} -->
+                    {% for field in form.visible_fields %}
+                       {{ field.label_tag }}
+                         <p>{{ field.errors }}</p>
+                         {{ field }}
+                         {{ field.help_text }}
+                    {% endfor %}
+                    <input type="submit" value="Save" class="button mb-1">
+                </form>
+            </div>
+        </div><!--end .post-wrapper-->
+    </main>
+        <!--end main .post-section-->
+        <!-- set tags  for a particular post -->
+
+    {% endblock content %}

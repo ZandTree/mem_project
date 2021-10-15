@@ -1,0 +1,51 @@
+{% load static %}
+{% load i18n %}
+{% load widget_tweaks %}
+<!-- check id form -->
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/post.css' %}">
+{% endblock %}
+<div class="alert-signup"></div>
+<form id="signup_form" method="post" action="{% url 'account_signup' %}" class="form-auth">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="email" class="white">
+         {% trans 'Your Email' %}
+        </label>
+        <p class="er-email"></p>
+        <input type="email"
+                  name="email"
+                  placeholder="E-mail address"
+                  id="id_email"
+                  class="input-control-auth"
+                  autofocus="autofocus"
+                  autocomplete="on"
+                  title="your email">
+    </div>
+    <div class="form-group">
+        <label for="password1" class="white">{% trans 'Your password' %}</label>
+        <p class="white">({% trans "must contain at least 8 characters" %})</p>        
+        <p class="er-psw1"></p>
+        <input type="password"
+              name="password1"
+              placeholder="Your password"
+              required="" i
+              id="id_password1"
+              autocomplete="off"
+              class="input-control-auth">
+
+    </div>
+    <div class="form-group">
+        <label for="password1" class="white">{% trans 'Confirm your password' %}</label>
+        <p class="er-psw2"></p>
+        <input type="password"
+              name="password2"
+              placeholder= '{% trans "Confirm your password" %}'
+              required=""
+              id="id_password2"
+              class="input-control-auth"
+              autocomplete="off"
+              title="password again">
+    </div>
+    <button class="button mb-1 mt-2" type="submit">{% trans "Sign Up" %} </button>
+</form>

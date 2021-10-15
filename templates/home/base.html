@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+{% load static %}
+{% load i18n %}
+<html lang="en" dir="ltr">                                                 <head>
+        <meta charset="utf-8">
+        <title>{% block title %}notes{% endblock %}</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+        <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/ico/apple-touch-icon.png' %}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/ico/favicon-32x32.png' %}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/ico/favicon-16x16.png' %}">
+        <link rel="manifest" href="{% static 'img/ico/site.webmanifest' %}">
+
+        <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.css">
+        <!-- <link rel="stylesheet" href="static 'css/normalize.css' %}"> -->
+        <!-- <link rel="stylesheet" href=" static 'css/general.css' %}"> -->
+        <link rel="stylesheet" href="{% static 'css/backup_general/auth.css' %}">
+        <link rel="stylesheet" href="{% static 'css/backup_general/footer.css' %}">
+        <link rel="stylesheet" href="{% static 'css/backup_general/menu.css'%}">
+        <link rel="stylesheet" href="{% static 'css/normalize.css'%}">         <link rel="stylesheet" href="{% static 'css/index.css' %}">
+        <script src="https://kit.fontawesome.com/c0d0526434.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js">
+        </script>
+    </head>
+    <body>
+        <div class="grid-wrapper-index">                                       {% include '_extra/menu.html' %}
+        <div class="fade-msg">
+            <div class="fade-msg-wrap">
+                {% if messages%}                                                          {% for message in messages %}
+                   <div class="message">
+                       {{message}}
+                   </div>
+                   {% endfor %}
+                {% endif %}                                                        </div>
+        </div>
+        <div class="container">
+            <div class="call-button">
+                <h1>Site in development ... Coming soon ...</h1>
+                <h1>{% trans "The beauty of ordinary life" %}</h1>
+                <h2>{% trans "Welcome" %}, {{user}}</h2>
+            {% if not user.is_authenticated %}
+
+ <div class="greet">{% trans "No adds, no third parties involved" %}</div>
+ <div class="modal-btn-signup mt-2 start"> {% trans "Make an account" %}</div>
+ {% endif %}
+ </div>
+</div>
+{% include '_extra/footer.html' %}
+{# Login modal #}
+<div class="modal-bg-login" id="loginModal">
+<div class="modal-login">
+ <h2 class="title-auth">Log In</h2>
+ <div class="form-extra">
+     <p>{% trans 'If you have not created an account yet, please'%}
+     <a href="#" id="call-signup" data-target="">{% trans 'Sign Up'%}</a></p>
+ </div>
+ {% include 'account/my_ajax_login.html' %}
+ <span class="modal-close2"><i class="fas fa-times"></i></span>
+</div><!--end div modal -->
+</div><!--end div login modal-bg-->
+{# Signup modal #}
+<!-- block signup modal -->
+<div class="modal-bg-signup" id="signupModal">
+<div class="modal-signup" >
+ <h2 class="title-auth">{% trans "Sign Up" %}</h2>
+ <div class="form-extra">
+     <p>{% trans 'Already have an account? Then please' %} <a href="#" id="loginCall">{% trans 'Log In' %}</a></p>
+ </div>
+ {% include 'account/my_ajax_signup.html'%}
+ <span class="modal-close"><i class="fas fa-times"></i></span>
+</div><!--end div modal -->
+</div><!--end div signup modal-bg-->
+</div><!--div grid-wrapper-->
+
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+
+
+
+<script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>

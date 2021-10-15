@@ -1,0 +1,31 @@
+tat@zork:~/notes/templates$ cat 404.html
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block hero %}
+{% endblock hero%}
+
+{% block search %}
+{% endblock search %}
+
+{% block front %}
+{% endblock front %}
+
+{% block content %}
+<main class="container-section">
+    <div class="container-wrapper">
+        <div>
+            <h1>{% trans 'Oops... Sorry,Page Not Found' %}</h1><br>
+            <a href="/" class="button-home">Home</a>
+        </div>
+    </div>
+</main>
+{% endblock content %}
+
+{% block archive %}
+
+{% endblock archive %}
+{% block tags %}
+
+{% endblock tags %}

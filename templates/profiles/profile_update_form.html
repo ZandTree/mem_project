@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}                                                      {% load i18n %}
+
+# no need  load widget_tweaks, already adjust in forms.py
+{% block title %} update profile | {{block.super}}{% endblock %}
+    {% block styles %}
+    <link rel="stylesheet" href="{% static 'css/normalize.css'%}">
+        <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    {% endblock %}
+    {% block hero %}
+        <section class="hero">
+                <div class="hero-inner">
+                    <h2 class="spaceLet3">{% trans 'Make This Unforgettable' %}</h2>
+                </div>
+        </section>
+    {% endblock hero %}
+
+    {% block front%}
+    {% endblock %}
+    {% block content %}
+    <main class="container-section">
+        <div class="container-wrapper">
+            <div class="meta">
+                <h1 class="title-section">Here you can change your profile.</h1>
+            </div> <!--end post-meta-->
+            <!-- <hr> -->
+            <div class="content-body">
+                    <form method="post" action="{% url 'profiles:profile-update' profile.unid %}" class="form-main" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <!-- let op:errors -->
+                    {% if form.errors %}
+                        <p class="alert">{{form.errors}}</p>
+                    {% endif %}
+                    {% for field in form.visible_fields %}
+                       {{ field.label_tag }}
+                         <p class="alert">{{ field.errors }}</p>
+                         {{ field }}
+                         {{ field.help_text }}
+                    {% endfor %}
+                    <input type="submit" value="Update" class="button mb-1">
+                </form>
+            </div>
+        </div><!--end .post-wrapper-->
+    </main>
+        <!--end main .post-section-->
+        <!-- set tags  for a particular post -->
+    {% endblock content %}

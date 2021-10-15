@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} post delete?{% endblock %}
+
+    {% block styles %}
+        <link rel="stylesheet" href="{% static 'css/normalize.css'%}">
+        <link rel="stylesheet" href="{% static 'css/post.css' %}">
+    {% endblock %}
+
+    {% block front%}
+    {% endblock %}
+
+    {% block content %}
+    <main class="container-section">
+        <div class="container-wrapper">
+            <form class="" action="" method="post">
+                    <h4>Do you really want to delete your post?</h4>
+                    {% csrf_token %}
+                    <button class="button-alert mt-1" type="submit">Yes. Delete This Post</button>
+            </form>
+            <div class="mb-1 mt-1">
+                <i class='fas fa-chevron-circle-left' style='font-size:24px'></i><span class="space"><a class="black" href="{% url 'posts:post' post.unid %}">Back to post</a></span>
+            </div>
+
+        </div><!--end .post-wrapper-->
+    </main>
+        <!--end main .post-section-->
+        <!-- set tags  for a particular post -->
+    {% endblock content %}

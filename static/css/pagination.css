@@ -1,0 +1,57 @@
+/* *******************
+Pagination
+******************* */
+
+.pagination {
+    font-family: "Open Sans",sans-serif;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 3rem;
+
+}
+.pag-wrapper {
+    padding:5px;
+    background: gray;
+    box-shadow: 0 2px 20px 0 rgba(0,0,0,.5);
+    border-radius: 50px;
+}
+.pag-wrapper li{
+    display: inline-block;
+    list-style: none;
+}
+.pag-wrapper li a{
+    background: black;
+    text-decoration: none;
+    color:rgba(255,255,255,0.5);
+    /* #ee9595; */
+    /* #333; */
+    border-radius: 50%;
+    margin: 4px;
+    box-shadow:inset 0 5px 10px rgba(0,0,0,.5), 0 3px 6px rgba(0,0,0,.5);
+    display: block;
+    transition: 0.5s;
+    width:25px;
+    height:25px;
+    line-height: 25px !important;
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 0 7px;
+}
+.pag-wrapper li a:hover,
+.pag-wrapper li >.active{
+    color:black;
+    background: white;
+}
+.pag-wrapper li:first-child a{
+    border-radius: 50px 0 0 50px;
+}
+.pag-wrapper li:last-child a{
+    border-radius: 0px 50px 50px 0px;
+}
+@media (max-width:700px){
+    .pag-wrapper li a{
+        /* margin:4px 8px; */
+        padding:0 .5rem;
+    }
+}

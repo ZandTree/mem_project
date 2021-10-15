@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}Feedback | {{block.super}}{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/normalize.css'%}">
+    <link rel="stylesheet" href="{% static 'css/feedback.css' %}">
+
+{% endblock %}
+
+{% block hero %}
+    <section class="hero">
+            <div class="hero-inner">
+                <h2 class="spaceLet3">Make This Unforgettable</h2>
+            </div>
+    </section>
+ {% endblock hero %}
+{% block content %}
+<!-- Contact -->
+<main class="container-section">
+    <div class="container-wrapper">
+        <h1>Get in touch with us</h1>
+        <div class="content-body">
+            <!-- contact-box -->
+        <form class="form-main" action="" method="POST">
+            {% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+              {{ hidden }}
+            {% endfor %}
+            {% for field in form.visible_fields %}
+              <div class="form-group">
+                <label for="{{ field.id_for_label }}" class="black flx">{{ field.label }} <p class='red padLeft'>*</p></label>
+                {{ field|add_class:'input-main' }}
+                <p class="green">{{field.help_text}}</p>
+                {% for error in field.errors %}
+                  <span class="space red">{{ error }}</span>
+                {% endfor %}
+              </div>
+            {% endfor %}
+            <input type="submit" value="Save" class="button mb-1 mt-1">
+        </form>
+        </div>
+        <div class="mt-2">
+            <i class="fas fa-arrow-circle-left"></i>
+            <span class="space">
+                <a href="index.html" class="black">Back</a>
+            </span>
+        </div>
+        <div class="fill"></div>
+    </div>
+</main>
+{% endblock content %}

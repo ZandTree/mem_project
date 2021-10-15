@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} post detail |{{block.super}}{% endblock %}
+
+    {% block styles %}
+    <link rel="stylesheet" href="{% static 'css/normalize.css'%}">
+        <link rel="stylesheet" href="{% static 'css/post.css' %}">
+    {% endblock %}
+
+{% block front%}
+{% endblock %}
+
+{% block content %}
+<main class="container-section">
+    <div class="container-wrapper">
+        <div class="flash-msg">
+            {% if messages %}
+                {% for msg in messages%}
+                    <div class="flash-msg-item">{{msg}}</div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="meta">
+            <h1 class="title-section">{{post.title}}</h1>
+            <h5 class="date">Created: {{post.created|date:'d-m-Y'}}</h5>
+        </div> <!--end post-meta-->
+        <!-- <hr> -->
+        <div class="content-body">
+            {% if post.img %}
+            <img src="{{post.img.url}}" alt="post image" class="">
+            {% endif %}
+            <div class="info">
+                <div class="info-bio">
+                    {{post.content|safe}}
+                </div>
+                </div>
+    <div class="post-action">
+
+        <div class="mb-1 mt-1">
+            <a class="link-button" href="{% url 'posts:post-edit' post.unid %}">Edit your post</a>
+        </div>
+        <div class="mb-1 mt-1 alert">
+            <a class="button-link-danger" href="{% url 'posts:post-delete' post.unid %}">Delete Your post</a>
+        </div>
+    </div>
+
+    </div><!--end .post-wrapper-->
+</main>
+    <!--end main .post-section-->
+    <!-- set tags  for a particular post -->
+{% endblock content %}

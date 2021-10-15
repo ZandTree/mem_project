@@ -1,0 +1,37 @@
+ /*  hero section
+ ******************************** */
+ .hero {
+     display: flex;
+     align-items:center;
+     justify-content: center;
+     background-color: white;
+     background-image:  url(../img/road/proccessed/road_1950_crop_bottom.jpg);
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
+     height: 20vh;
+ }
+
+ .hero-inner h2{
+     color:#fff;
+     line-height:1.2;
+     text-align: center;
+     /* margin-top: 1rem; */
+     /* font-size: 2.5rem; */
+ }
+ /* serving differen sizes of bg-images on logout page */
+ @media (min-width:801px){
+     .hero {
+        background-image:  url(../img/road/crop/road_1950_250kb_cr.jpg);
+     }
+ }
+ @media (min-width:401px) and (max-width:800px){
+     .hero {
+        background-image:  url(../img/road/crop/road_1350_130kb_cr.jpg);
+     }
+ }
+ @media (max-width:400px){
+     .hero {
+        background-image:  url(../img/road/crop/road_500_17kb_cr.jpg);
+     }
+ }

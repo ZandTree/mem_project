@@ -1,0 +1,49 @@
+{% extends "account/base.html" %}
+{% load i18n %}
+{% load static %}
+{% load arch_form %}
+{% block title %} logout | {{block.super}}{% endblock %}
+{% block head_title %}{% trans "Sign Out" %}{% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/normalize.css'%}">
+    <link rel="stylesheet" href="{% static 'css/post.css' %}">
+{% endblock %}
+        <!-- hero -->
+        {% block hero %}
+            <section class="hero">
+                <div class="hero-inner">
+                    <h2 class="mt-1">Some important text </h2>
+                </div>
+            </section>
+        {% endblock hero %}
+        {% block content%}
+        <main class="container-section">
+            <div class="container-wrapper">
+           <section class="contact-section">
+               <div class="inner-width-section">
+                   <h1 class="white spaceLet3">{% trans "Sign Out" %}</h1>
+                   <h4 class="white">{% trans 'Are you sure you want to sign out?' %}</h4>
+                   <form class="contact-box mt-1" action="{% url 'account_logout' %}" method="post">
+                       {% csrf_token %}
+                       {% if redirect_field_value %}
+                       <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                       {% endif %}
+                       <button type="submit" class="button spaceLet3">{% trans 'Sign Out' %}</button>
+                    </form>
+                  <div class="mt-1">
+                       <i class="fas fa-arrow-circle-left white"></i>
+                       <span class="space">
+                           <a href="/" class="no-understreep white">{% trans 'Back' %}</a>
+                       </span>
+                   </div>
+                </div>
+
+                </main>
+           <!--</section> -->
+           <!-- ******* space placeholder *********** -->
+
+        {% endblock content %}
+
+        <!-- Footer-->
+        {% block footer %}
+        {% endblock footer %}

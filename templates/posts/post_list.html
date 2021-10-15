@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load arch_form %}                                                   
+{% block title %} posts |{{block.super}}{% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/normalize.css'%}">
+    <link rel="stylesheet" href="{% static 'css/post.css' %}">
+
+{% endblock %}
+{% block hero %}
+<section class="hero">
+        <div class="hero-inner">
+            <h2 class="spaceLet3">{% trans 'Make This Unforgettable' %}</h2>
+        </div>
+</section>                                                             {% endblock hero%}
+
+
+{% block content %}
+<!-- <section class="post-container"> -->
+<main class="container-section">
+    <h1>All posts:</h1>
+    <div class="container-wrapper">
+        {% for post in posts %}
+        <div class="post-unit">                                                    <div class="post-meta">
+                <h4 class="post-title-allblogs">{{post.title}}</h4>
+                <div class="post-preview">
+                    <div class="post-preview-top">
+                        <span>
+                            <i class="far fa-calendar-alt space"></i>
+                            {{post.created|date:"F j D, Y"}}
+                        </span>
+                    </div>
+                </div>
+            </div> <!--end post-meta-->
+            <div class="post-cloud">
+            {% if post.img %}                                                      <div class="image-wrapper-main">
+                <img class="post-img" src="{{post.img.url}}" alt="post-image">
+            </div>
+            {% endif %}
+            <div class="post-body-main">
+                    <div class="post-content">
+                        Content:{{post.content|truncatewords:30|safe}}
+
+
+                    </div>
+                    <a href="{% url 'posts:post' post.unid %}">Read more &hellip;</a>
+            </div>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="pagination">
+            {% if posts %}
+            <ul class="pag-wrapper">
+                <li><a href="?page=1">
+                        <i class="fas fa-angle-double-left"></i>
+                    </a>
+                </li>
+                {% if page_obj.has_previous%}
+                    <li>
+                        <a href="?page={{page_obj.previous_page_number}}">
+                            <i class="fa fa-long-arrow-left"></i>
+                        </a>
+                    </li>
+                {% endif %}
+                {% for num in page_obj.paginator.page_range %}
+                    {% if num == page_obj.number %}
+                        <li><a href="#" class="active">{{num}}</a></li>
+
+                    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3'%}
+                        <li><a href="?page={{num}}">{{num}}</a></li>
+                    {% endif %}
+
+                {% endfor %}
+                {% if page_obj.has_next%}
+                <li><a href="?page={{page_obj.next_page_number}}">
+                    <i class="fa fa-long-arrow-right"></i>
+                </a>
+                </li>
+                {% endif %}
+
+                <li><a href="?page={{page_obj.paginator.num_pages}}"><i class="fas fa-angle-double-right"></i>
+                    </a>
+                </li>
+            </ul>
+            {% elif err %}
+                <h2 class="green">{{err}}</h2>
+            {% else %}
+            <h4>No posts</h4>
+            {% endif %}
+        </div><!--end pagination-->
+    </div><!--end .post-wrapper-->
+</main>
+<!--end main .post-section-->
+<!-- </section> --><!--end post-container-->
+
+{% endblock content %}

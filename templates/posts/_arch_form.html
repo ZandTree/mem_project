@@ -1,0 +1,11 @@
+{% if arch_form.errors %}
+    <p class="alert">{{form.errors}}</p>
+{% endif %}
+    <form method="post" autocomplete="off"
+        action="{% url 'posts:arch' %}" novalidate>
+         <!--  -->
+        {% csrf_token %}
+        {{ arch_form.date }}
+        <br><br>
+        <button type="submit" class="button-small spaceLet3">Search</button>
+    </form>

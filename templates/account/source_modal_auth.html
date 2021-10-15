@@ -1,0 +1,83 @@
+<div class="modal-bg-signup" id="signup">
+    <div class="modal-signup" >
+        <h2 class="title-auth">
+            Sign Up
+        </h2>
+        <div class="form-extra">
+            <p class="optionTextForm">
+                Already have an account? Please
+                <a href="#" id="loginCall">
+                    <span class="space">Log in</span>
+                </a>
+            </p>
+        </div>
+        <form class="form-auth" action="#" method="post">
+            <!-- email         -->
+            <div class="form-group">
+                <label for="email">
+                    Your Email
+                </label>
+                <input type="email" name="email" required="" placeholder="You email"
+                id="id_email" class="input-control-auth" autofocus="autofocus" title="email"
+                >
+            </div>
+            <!-- psw1           -->
+            <div class="form-group">
+                <label for="password1">Your password</label>
+                <input type="password" name="password1" required="" placeholder="You password"
+                id="id_password1" class="input-control-auth"  maxlength="150" aria-autocomplete="list" title="password1">
+            </div>
+            <!-- psw2 -->
+            <div class="form-group">
+                <label for="password2">Confirm your password</label>
+                <input type="password" name="password2" required="" placeholder="Your password"
+                id="id_password2" class="input-control-auth"  maxlength="150" aria-autocomplete="list" title="password2">
+            </div>
+            <button type="submit" class="button mb-1">Sign Up</button>
+        </form>
+        <span class="modal-close"><i class="fas fa-times"></i></span>
+    </div><!--end div modal -->
+</div><!--end div signup modal-bg-->
+
+
+<!-- block login modal -->
+<div class="modal-bg-login" id="login">
+    <div class="modal-login">
+        <h2 class="title-auth">Log In</h2>
+        <div class="form-extra">
+            <p class="optionTextForm">If you have not created an account yet, please
+            <a href="#" id="call-signup"
+               class=""
+               data-target=""><span class="space">Sign Up</span>
+            </a></p>
+        </div>
+        <form class="form-auth" action="#" method="post">
+            <!-- email         -->
+            <div class="form-group">
+                <label for="email">
+                    Your Email
+                </label>
+                <input type="email" name="email" required="" placeholder="Your email"
+                id="id_email" class="input-control-auth" autofocus="autofocus" title="email"
+                >
+            </div>
+            <!-- psw1           -->
+            <div class="form-group">
+                <label for="password">Your password</label>
+                <input type="password" name="password" required="" placeholder="Your password"
+                id="id_password" class="input-control-auth"  maxlength="150" aria-autocomplete="list" title="password1">
+            </div>
+            <div class="form-extra" >
+                <label for="id_remember">Remeber me</label>
+                <input type="checkbox" name="remember" id="id_remember" class="input-control-auth">
+            </div>
+
+            <div class="form-group">
+                <p class="optionTextForm white">Forgot Password?<a href="#"><span class="space white streep">Here</span></a></p>
+            </div>
+
+            <button type="submit" class="button marginBot mb-1">Log In</button>
+        </form>
+        <span class="modal-close2"><i class="fas fa-times"></i></span>
+    </div><!--end div modal -->
+</div><!--end div login modal-bg-->

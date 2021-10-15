@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+{% load static %}
+{% load arch_form %}
+{% load i18n %}
+<html lang="en" dir="ltr">  
+    <head>
+    <meta charset="utf-8">   
+    <title>{% block title %}  notes{% endblock %}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/ico/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/ico/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/ico/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'img/ico/site.webmanifest' %}">
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.css">
+    <link rel="stylesheet" href="{% static 'css/backup_general/auth.css' %}">
+    <link rel="stylesheet" href="{% static 'css/backup_general/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/backup_general/menu.css'%}">   
+    
+    
+    {% block styles %}
+    {% endblock %}
+    <script src="https://kit.fontawesome.com/c0d0526434.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.js"></script>
+
+    </head>
+    <body>
+        <div class="grid-wrapper"> 
+            {% include '_extra/menu.html' %}
+            <div class="fade-msg">
+                <div class="fade-msg-wrap">
+                    {% if messages%}
+                       {% for message in messages %}
+                       <div class="message">
+                           {{message}}
+                       </div>
+                       {% endfor %}
+                    {% endif %}
+                </div>
+            </div>  
+        
+     
+    {% block hero %}
+    {% endblock hero%}
+
+    {% block search %}
+        {% if user.is_authenticated %}
+        <section class="search">
+                <div class="search-inner">
+                    <form class="search-form" action="{% url 'posts:search' %}" method="get">
+                        {% if flag %}
+                            <p class="green">Please enter a word to search</p>
+                        {% endif %}
+                        {% if not_found %}
+                            <p class="green">{{not_found}}</p>                                                                                               {% endif %}
+                        <div class="search-box">
+                            <input type="text" name="q" value=""  class="search-txt" placeholder="search">
+                            <a href="#" class="search-btn">
+                                <button class="invisible" type="submit">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+        </section>
+        {% endif %}
+    {% endblock search %}
+
+    {% block front %}    
+    {% endblock front %}
+
+    {% block content %}
+    {% endblock content %}
+
+    {% if user.is_authenticated %}  
+        {% block archive %}
+            <aside class="archive">   
+                <div class="archive-wrapper">
+                    <h3>Archive</h3>
+                    {% arch_form %}
+                </div>  
+            </aside>
+            <script>
+                $(function () {
+                    //defines, как будет выглядеть поле ввода для user
+                    // here 2010-05-31|==> what my db expects
+                $("#id_date").datepicker({
+                    format:'yyyy-mm-dd'
+                });
+                });
+           </script>
+        {% endblock archive %}
+        {% block tags %}
+        <div class="tag-block">
+            <div class="tag-collection"> 
+                <h3>All tags:</h3>
+                  {% if tags %}
+                    {% for tag in tags %}
+                      <span class="space tag-wrap"><a href="{% url 'posts:tag-search' tag=tag.name %}" class="no-understreep black">{{tag}}</a></span>
+                     {% endfor %}
+                  {% else %} 
+                  <p>No tags</p>
+                {% endif %}
+            </div>
+        <div class="tag-share mt-1"></div>
+        </div>
+        
+        <!--end .tag-block-->
+    {% endblock tags %}
+            <!--end post-tags-->
+    {% endif %}
+    <!-- </section> --><!--end post-container-->
+<!-- Footer-->
+    {% include '_extra/footer.html' %}
+<!--end footer help -->
+
+<!-- block login modal -->
+    {% block modal %}
+        {# Login modal #}
+        <div class="modal-bg-login" id="loginModal">
+            <div class="modal-login">
+                <h2 class="title-auth">Log In</h2>
+                <div class="form-extra">
+                    <p>{% trans 'If you have not created an account yet, please'%}
+                    <a href="#" id="call-signup" data-target="">{% trans 'Sign Up'%}</a></p>
+                </div>
+                {% include 'account/my_ajax_login.html' %}
+                <span class="modal-close2"><i class="fas fa-times"></i></span>
+            </div><!--end div modal -->
+        </div><!--end div login modal-bg-->
+        {# Signup modal #}
+        <!-- block signup modal -->
+        <div class="modal-bg-signup" id="signupModal">
+            <div class="modal-signup" >
+                <h2 class="title-auth">{% trans "Sign Up" %}</h2>
+                <div class="form-extra">
+                    <p>{% trans 'Already have an account? Then please' %} <a href="#" id="loginCall">{% trans 'Log In' %}</a></p>
+                </div>
+                {% include 'account/my_ajax_signup.html'%}
+                <span class="modal-close"><i class="fas fa-times"></i></span>
+            </div><!--end div modal -->
+
+        </div><!--end div signup modal-bg-->
+        {% endblock modal %}
+    </div><!--div grid-wrapper-->
+
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
+    </body>
+</html>

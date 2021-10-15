@@ -1,0 +1,16 @@
+{% load i18n %}
+{% load account %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/normalize.css'%}">
+    <link rel="stylesheet" href="{% static 'css/post.css' %}">
+{% endblock %}
+{% block content %}
+<main class="container-section">
+    <div class="container-wrapper">
+        <div class="meta">
+
+{% user_display user as user_display %}
+<p><strong>{% trans "Note" %}:</strong> {% blocktrans %}you are already logged in as {{ user_display }}.{% endblocktrans %}</p>
+        </div>
+    </div>
+<main>        

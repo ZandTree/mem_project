@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %} profile detail{% endblock %}
+
+    {% block styles %}
+        <link rel="stylesheet" href="{% static 'css/normalize.css'%}">
+        <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    {% endblock %}
+    {% block hero %}
+        <section class="hero">
+                <div class="hero-inner">
+                    <h2 class="spaceLet3">{% trans 'Make This Unforgettable' %}</h2>
+                </div>
+        </section>
+    {% endblock hero %}
+                                                                           {% block front%}
+    {% endblock %}
+    {% block content %}
+    <!-- <section class="post-container"> -->                              <main class="container-section">
+        <div class="container-wrapper">
+            <div class="flash-msg">
+                {% if messages %}
+                    {% for msg in messages%}                                                   <div class="flash-msg-item">{{msg}}</div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="meta">
+                <h1 class="title-section">Welcome by your profile page, {{user.profile}}</h1>
+            </div> <!--end post-meta-->
+
+<!-- <hr> -->
+ <div class="content-body">
+    {% if profile.avatar %}
+        <img src="{{profile.avatar.url}}" alt="avatar" class="img-avatar rondImg">
+    {% else %}
+        <img src="{% static 'img/myuser.svg' %}" class="img-avatar" alt="">
+    {% endif %}
+    <!-- <div class="info"> -->
+        <p class="intro-title">Please, tell about yourself:</p>
+        <div class="info-bio">
+            {{profile.bio}}
+
+
+        </div>
+    <!-- </div> -->
+</div>
+
+</div><!--end .post-wrapper-->
+</main>
+<!--end main .post-section-->
+<!-- set tags  for a particular post -->
+
+<!-- </section> --><!--end post-container-->
+{% endblock content %}
+{% block archive %}
+<aside class="archive">
+<div class="archive-wrapper">
+<h3>Your Account</h3>
+<div class="mb-1 mt-1">
+    <a class="edit-profile-button" href="{% url 'profiles:profile-update' profile.unid %}">Edit profile</a>
+</div>
+<div class="mb-1 mt-1">
+    <a class="change-psw-button bgBrown" href="{% url 'account_change_password' %}">Change password</a>
+</div>
+<div class="mb-1 mt-1 alert">
+    <!-- button-link-danger -->
+    <a class="delete-profile-button" href="{% url 'profiles:profile-delete' profile.unid %}">Delete account</a>
+</div>
+</div>
+</aside>
+
+{% endblock %}

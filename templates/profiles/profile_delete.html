@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block title %} delete profile? | {{block.super}}{% endblock %}
+    {% block styles %}
+    <link rel="stylesheet" href="{% static 'css/normalize.css'%}">
+        <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    {% endblock %}
+    {% block hero %}
+        <section class="hero">
+                <div class="hero-inner">
+                    <h2 class="spaceLet3">{% trans 'Make This Unforgettable' %}</h2>
+                </div>
+        </section>
+    {% endblock hero %}
+    {% block front%}
+    {% endblock %}
+    {% block content %}
+    <main class="container-section">
+        <div class="container-wrapper">
+            <div class="content-body">
+                <form class="" action="" method="post">
+                    <h4>Do you really want to delete your account?</h4>
+                    {% csrf_token %}
+                    <button class="button-alert mt-1" type="submit">Yes. Delete My Account.</button>
+                </form>
+
+                <div class="mb-1 mt-1">
+                    <i class='fas fa-chevron-circle-left' style='font-size:24px'></i><span class="space"><a class="black" href="{% url 'profiles:profile' profile.unid %}">Back to profile</a></span>
+                </div>
+            </div>
+        </div><!--end .post-wrapper-->
+    </main>
+        <!--end main .post-section-->
+        <!-- set tags  for a particular post -->
+    {% endblock content %}

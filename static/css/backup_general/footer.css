@@ -1,0 +1,102 @@
+/* ************ footer ****************** */
+
+/* ###########################
+div where google maps lives
+############################ */
+#map {
+    height: 400px;
+    width:100%;
+}
+/* ******* general settings *********** */
+
+#footer-nav {
+    background-color:rgb(29,25,22);
+    color: rgb(255,234,180);
+    padding: 1rem;
+    /* in case browser doesn't support sticky property fall back */
+    /* position:fixed;
+    bottom: 0;
+    width:100%; */
+    /*otherwise */
+    /* position: sticky;
+    bottom: 0px; */
+    /* just to be sure that we have this elem behind the panel */
+    /* z-index: 100; */
+
+}
+
+.footer-nav-menu{
+    max-width: 90%;
+    margin:auto;
+    list-style: none;
+}
+.panel-close{
+   text-align: right;
+}
+.panel-close i{
+   font-size: 2rem;
+}
+
+.footer-nav-menu {
+    display:flex;
+    /* justify-content: space-between; */
+    justify-content: space-around;
+}
+.footer-nav-menu-item i{
+   font-size: 1.5rem;
+}
+/* default div.panel |=> hidden under the footer thx to transform: translateY(100%); if click |==> transform: translateY(0%) and it appears above the footer with fixed state;*/
+.panel {
+   /* padding:1rem; */
+   height:100vh;
+   /* or 100% */
+   width:100%;
+   /* to raise this elem above the rest */
+   /* with fixed |=> pulled out the flow */
+   position: fixed;
+   top:0;
+   left:0;
+   /* let op: bg color on front, the rest is behind panel */
+   background-color: #e7e3e3;
+   /* important moment: we need only with css tool to shift
+   click elem |==> from fixed position to jump under the footer
+   ax Y|=> push it 100% in Y-direction*/
+   transform: translateY(100%);
+   /* to prevent just jump|==> smooth changing (0% vs 100%) */
+   transition: -webkit-transform 500ms ease;
+   transition: transform 500ms ease;
+}
+.panel.active {
+   -webkit-transform: translateY(0);
+   transform: translateY(0);
+   /* aply to active class .panel.active  */
+   animation: slideUp 0.8s ease;
+}
+
+@keyframes slideUp {
+   from{
+       transform: translateY(100%);
+       opacity: 0;
+   }
+   to{
+       transform: translateY(0%);
+       opacity: 1;
+   }
+}
+.panel-inner{
+   /* otherwise we will loose X from the right side */
+   margin-left:2rem;
+   padding:1rem;
+
+}
+.panel ul{
+   list-style: none;
+   padding:0;
+}
+.panel ul li{
+   margin:1rem 0;
+}
+#help,#about{
+    background-color: #eedcc1;
+}
+/* *********** end footer **************** */

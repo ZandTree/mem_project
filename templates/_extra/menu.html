@@ -1,0 +1,53 @@
+{% load static %}
+{% load i18n %}
+<nav>
+    <div class="logo">
+        <h4>Notes</h4>
+    </div>
+    <form class="lang" action="{% url 'set_language' %}" method="post" >
+        {% csrf_token %}
+        {% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as LANGUAGES %}
+        {% get_language_info_list for LANGUAGES as languages %}
+        <input name="next" type="hidden" value="{{ redirect_to }}">
+        {% if request.LANGUAGE_CODE == 'en' %}
+
+        <img class="eng-flag" src="{% static 'img/eng.png'%}" alt="english flag">
+        {% endif %}
+        <select name="language" class="select-lg">
+            {% for language in languages %}
+                <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %} class="option-lg">
+                    {{ language.name_local }}
+                </option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Go" class="button-lg">
+
+    </form>
+    <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="{% url 'feedback:feedback' %}">Contact</a></li>
+        <li><a href="{% url 'posts:post' post_unid='greetings' %} ">Post</a></li>
+        <!-- url 'posts:post' %} -->
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'posts:all-posts' %}">All Blogs</a></li>
+            <li><a href="{% url 'posts:post-create' %}">Create Post</a></li>
+            <li><a href="{% url 'account_logout' %}">{% trans 'Log out' %}</a></li>
+            <li><a href="{{user.profile.get_absolute_url}}">Profile</a></li>
+        {% else %}
+            <li><button class="mask-auth modal-btn-signup" data-toggle="modal" data-target="#loginModal">{% trans 'Sign Up' %}</button></li>
+            <li><button class="mask-auth modal-btn-login">Log In</button></li>
+<!-- To do??? -->
+            <!-- <li  if 'profile' in request.path  %}  class=""  endif %}>
+                <a href="profile.html">Profile</a>
+            </li> -->
+
+        {% endif %}
+
+    </ul>
+    <div class="burger toggle">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+    </div>
+</nav>

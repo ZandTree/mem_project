@@ -1,0 +1,67 @@
+{% load static %}
+<footer id="footer-nav">
+    <div class="footer-nav-inner">
+        <ul class="footer-nav-menu">
+            <li class="footer-nav-menu-item" data-label="help"><i class="fas fa-info-circle"></i>
+            </li>
+            <li class="footer-nav-menu-item" data-label="about"><i class="fab fa-accusoft"></i>
+            </li>                                                              </ul>
+    </div>
+</footer>
+<div id="help" class="panel">
+    <div class="panel-inner">
+        <p class="panel-close"><i class="fas fa-times"></i></p>
+        <h1>You can easely find us</h1>
+<!--
+        <div class="">
+            <h3>Another resource:https://www.latlong.net/convert-address-to-lat-long.html</h3> -->
+            <!-- <a href="https://www.latlong.net/c/?lat=52.067780&long=4.240640" target="_blank">Here</a> -->                                        <!-- </div> -->                                                
+        <div id="map" >                                                        </div>
+        <script>
+            function initMap(){
+
+                //map options
+                const options = {
+                    zoom:11,
+
+                    center:{lat:52.0705,lng:4.3007}
+                }
+
+               //new map object
+               let map = new google.maps.Map(document.getElementById('map'),options)
+               //add new image
+               // const image= new google.maps.MarkerImage(place.icon,new google.maps.Size(70,90))
+               const symbolThree = {
+                   path: 'M -2,-2 2,2 M 2,-2 -2,2',
+                   strokeColor: 'red',
+                   strokeWeight: 4
+                 };
+
+               //add marker object
+               let marker = new google.maps.Marker({
+                   position:{lat:52.0705,lng:4.3007},
+                   map:map,
+                   //optional (if don't want  default == red)
+                   icon:symbolThree
+               })
+
+           }
+
+        </script>
+         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDb7wsIWKAuyj9csrRh1lfOba0TOTuZafc&callback=initMap"
+          async defer></script>
+   </div>
+</div>
+<div id="about" class="panel">
+   <div class="panel-inner">
+       <p class="panel-close"><i class="fas fa-times"></i></p>
+       <h2 class="panel-header">
+           About Us
+       </h2>
+       <ul>
+           <li class="panel-item"><div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div></li>
+           <li class="panel-item"><div>Images <a href="https://www.pexels.com/"></a></div></li>
+
+       </ul>
+   </div>
+</div>
