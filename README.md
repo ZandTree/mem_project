@@ -10,7 +10,7 @@
 
 - pagination
 
-- editor: tynimce
+- editor: tinymce
 
 - search on date (only date not time): Fengyuan Chen’s Datepicker
 
@@ -24,7 +24,7 @@
 
 #### Bugs:
 
-1. Copy paste in timycme works not as expected
+1. Copy paste in tinycme works not as expected
 
 
 
