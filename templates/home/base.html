@@ -25,15 +25,18 @@
         </script>
     </head>
     <body>
-        <div class="grid-wrapper-index">                                       {% include '_extra/menu.html' %}
+        <div class="grid-wrapper-index">
+            {% include '_extra/menu.html' %}
         <div class="fade-msg">
             <div class="fade-msg-wrap">
-                {% if messages%}                                                          {% for message in messages %}
+                {% if messages%} 
+                    {% for message in messages %}
                    <div class="message">
                        {{message}}
                    </div>
                    {% endfor %}
-                {% endif %}                                                        </div>
+                {% endif %} 
+            </div>
         </div>
         <div class="container">
             <div class="call-button">
@@ -75,9 +78,6 @@
 </div><!--div grid-wrapper-->
 
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-
-
-
 <script src="{% static 'js/scripts.js' %}"></script>
 </body>
 </html>

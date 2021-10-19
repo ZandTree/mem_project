@@ -55,7 +55,8 @@
                             <p class="green">Please enter a word to search</p>
                         {% endif %}
                         {% if not_found %}
-                            <p class="green">{{not_found}}</p>                                                                                               {% endif %}
+                            <p class="green">{{not_found}}</>
+                        {% endif %}
                         <div class="search-box">
                             <input type="text" name="q" value=""  class="search-txt" placeholder="search">
                             <a href="#" class="search-btn">
@@ -86,7 +87,7 @@
             </aside>
             <script>
                 $(function () {
-                    //defines, как будет выглядеть поле ввода для user
+                    //defines UI for input
                     // here 2010-05-31|==> what my db expects
                 $("#id_date").datepicker({
                     format:'yyyy-mm-dd'
@@ -143,7 +144,6 @@
                 {% include 'account/my_ajax_signup.html'%}
                 <span class="modal-close"><i class="fas fa-times"></i></span>
             </div><!--end div modal -->
-
         </div><!--end div signup modal-bg-->
         {% endblock modal %}
     </div><!--div grid-wrapper-->

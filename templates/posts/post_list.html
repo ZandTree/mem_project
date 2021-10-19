@@ -13,8 +13,8 @@
         <div class="hero-inner">
             <h2 class="spaceLet3">{% trans 'Make This Unforgettable' %}</h2>
         </div>
-</section>                                                             {% endblock hero%}
-
+</section>
+{% endblock hero%}
 
 {% block content %}
 <!-- <section class="post-container"> -->
@@ -22,7 +22,8 @@
     <h1>All posts:</h1>
     <div class="container-wrapper">
         {% for post in posts %}
-        <div class="post-unit">                                                    <div class="post-meta">
+        <div class="post-unit"> 
+            <div class="post-meta">
                 <h4 class="post-title-allblogs">{{post.title}}</h4>
                 <div class="post-preview">
                     <div class="post-preview-top">
@@ -34,14 +35,14 @@
                 </div>
             </div> <!--end post-meta-->
             <div class="post-cloud">
-            {% if post.img %}                                                      <div class="image-wrapper-main">
-                <img class="post-img" src="{{post.img.url}}" alt="post-image">
+            {% if post.img %} 
+            <div class="image-wrapper-main">
+                 <img class="post-img" src="{{post.img.url}}" alt="post-image">
             </div>
             {% endif %}
             <div class="post-body-main">
                     <div class="post-content">
                         Content:{{post.content|truncatewords:30|safe}}
-
 
                     </div>
                     <a href="{% url 'posts:post' post.unid %}">Read more &hellip;</a>
