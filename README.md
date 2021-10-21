@@ -6,6 +6,9 @@
 
 
 1. django 3.0
+
+- auth(allauth)
+ 
 - translation
 
 - pagination
