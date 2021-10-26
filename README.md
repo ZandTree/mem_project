@@ -23,7 +23,7 @@
 
 3. Images upload: aws s3
 
-`git pull https://github.com/ZandTree/mem_project.git`
+`git clone https://github.com/ZandTree/mem_project.git`
 
 #### Bugs:
 
