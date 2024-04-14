@@ -35,4 +35,4 @@
 - [x] Deploy: Linode (without docker)
 - [ ] Fix bugs
 
-### [ Look at the site  live](https://www.memoryoverflow.nl)
+
